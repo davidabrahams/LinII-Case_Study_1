@@ -1,0 +1,101 @@
+
+\documentclass{article}
+\usepackage{amsmath,graphicx}
+\usepackage{siunitx} % Provides the \SI{}{} and \si{} command for typesetting SI units
+\usepackage[margin=1in,letterpaper]{geometry} % this shaves off default margins which are too big
+\usepackage[final]{hyperref} % adds hyper links inside the generated pdf file
+\usepackage{listings}
+\usepackage{color}
+\usepackage{appendix}
+\usepackage{float}
+\usepackage[numbered]{mcode}
+
+\title{Muhlenberg Water Optimization}
+\author{David Abrahams}
+\date{September 2015}
+
+\begin{document}
+
+\maketitle
+
+\section{Results}
+
+To whom it may concern,
+
+I have created a framing for Muhlenberg's water supply, and have obtained the cheapest possible solution that meets all necessary safety requirements.
+
+We sought out to obtain the cheapest solution that did not violate any of the following conditions:
+
+\begin{itemize}
+  \item Each water supply can only produce a certain amount of water. See Appendix~\ref{max_water}.
+  \item Each city has a water need we must meet. See Appendix~\ref{water_needs}.
+  \item No town's average water hardness is greater than $1200 \si{\kilogram\per\mega\litre}$. See Appendix~\ref{hardness} for each supply's hardness.
+\end{itemize}
+
+The cost of transporting water from one water source to a town is defined in Appendix~\ref{costs}
+
+\appendix
+
+\section{Water transportation costs} \label{costs}
+
+The cost of transporting water from each city to each town is defined in the following table, where cost is in $\$ \si{\per\mega\litre}$.
+
+\begin{tabular}{| l l l l l l |}
+
+\hline
+& Peaceful Waters & Prinetown & Twin Lakes & Muhlenberg & Johnsville \\ \hline
+Lake Elizabeth & 450 & 460 & 440 & 445 & 455 \\
+\hline
+Lake Marie & 495 & 500 & 505 & 510 & 490 \\
+\hline
+Paradise Aquifer & 900 & 915 & 885 & 920 & 920 \\
+\hline
+Green River & 1800 & 1815 & 1795 & 1785 & 1820 \\
+\hline
+
+\end{tabular}
+
+\section{Maximum water supply} \label{max_water}
+
+Each source is able to produce the following amount of water, in $\si{\mega\litre\per\day}$.
+
+\begin{tabular}{| l l l l |}
+
+\hline
+Lake Elizabeth & Lake Marie & Paradise Aquifer & Green River \\ \hline
+15 & 10 & 60 & 80 \\
+\hline
+
+\end{tabular}
+
+\section{Water needs} \label{water_needs}
+
+Each city requires the following amount of water, in $\si{\mega\litre\per\day}$.
+
+\begin{tabular}{| l l l l l |}
+
+\hline
+Peaceful Waters & Prinetown & Twin Lakes & Muhlenberg & Johnsville \\ \hline
+30 & 10 & 50 & 20 & 40\\
+\hline
+
+\end{tabular}
+
+\section{Maximum water supply} \label{hardness}
+
+Each source's water has the following hardness, in $\si{\kilo\gram\per\mega\litre}$.
+
+\begin{tabular}{| l l l l |}
+
+\hline
+Lake Elizabeth & Lake Marie & Paradise Aquifer & Green River \\ \hline
+250 & 200 & 2300 & 700 \\
+\hline
+
+\end{tabular}
+	
+\section{The source code} \label{src}
+	
+\lstinputlisting{case_study_1.m}	
+		
+\end{document}
